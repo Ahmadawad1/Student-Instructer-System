@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DAL.ComputerEngineering>
+@{
+    Layout = "~/Areas/InstructerPortal/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Exams";
+}
+<br /><br /> 
+<br />
+@using (Html.BeginForm("Exams", "Exam_Messages", FormMethod.Post))
+{        <label style="margin-left:20px;font-family:cursive;font-weight:bolder">Press on the Table,if you want to commit any change</label><br />
+<br />
+<table class="table table-dark" id="tbl">
+    <tr><th>Course</th><th>First Exam</th><th>Second Exam</th><th>Final Exam</th><th>.</th></tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+           
+            <td>@i.CourseName</td>
+            <td contenteditable="true">@i.FirstExam</td>
+            <td contenteditable="true">@i.SecondExam</td>
+            <td contenteditable="true">@i.FinalExam</td>
+            <td><button type="submit" class="btn btn-primary" name="Save">Save</button></td>
+        </tr>
+    }
+
+</table>
+
+<input type="hidden" name="Name" id="Name" />
+<input type="hidden" name="First" id="First" />
+<input type="hidden" name="Second" id="Second" />
+<input type="hidden" id="Final" name="Final" />
+    }
+<script>
+    var tbl = document.getElementById("tbl");
+    for (var i = 0; i < tbl.rows.length; i++) {
+        tbl.rows[i].onclick = function () {
+            index = this.rowindex;
+
+            document.getElementById("Name").value = this.cells[0].innerHTML;
+            document.getElementById("First").value = this.cells[1].innerHTML;
+            document.getElementById("Second").value = this.cells[2].innerHTML;
+            document.getElementById("Final").value = this.cells[3].innerHTML;
+
+
+        }
+    }
+
+</script>
+

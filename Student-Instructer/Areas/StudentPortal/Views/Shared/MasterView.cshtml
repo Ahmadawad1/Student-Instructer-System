@@ -1,0 +1,139 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>@ViewBag.Title</title>
+   
+    <style>
+        
+     
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #3F3F3D;
+            padding: 30px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        a {
+            color: white;
+        }
+
+        #tabs {
+            padding: 0 0 0 50px;
+            width: 800px;
+            margin-left: -30px;
+            background: #2B2A28;
+            height: 80px;
+            border-bottom: 5px solid #EB4E01;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            border-right: 1px dotted #575654;
+        }
+
+            #tabs::before {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: -100;
+                width: 100%;
+                left: 0;
+                margin-top: 16px;
+                height: 80px;
+                background: #2B2A28;
+                border-bottom: 5px solid #EB4E01;
+            }
+
+            #tabs::after {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: 0;
+                background: #EB4E01;
+                transition: transform 400ms;
+            }
+            #tabs:last-child{
+                color:red;
+            }
+
+        .tab {
+            border-right: 3px solid #EB4E01;
+            margin-top: 24px;
+            position: relative;
+            display: inline-block;
+            font-size: 20px;
+            font-family: 'Arial Rounded MT';
+            padding: 0 25px 0 25px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #EB4E01;
+            transition: ease 0.6s;
+        }
+      
+            .tab:hover {
+                color: #7a2800;
+            }
+
+#content {
+    position: relative;
+    height: 800px;
+    }
+
+    footer {
+            position: fixed;
+    bottom: 0;
+            right: 0;
+            font-size: 13px;
+            background: #555;
+            padding: 5px 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body style="background-color:rgba(0,0,0,0.2)">
+   
+        <main>
+            <h1 style="color:white;font-family:Britannic">Student Portal</h1><br />
+
+            <div style="display:inline-flex;">
+             <h3 style="color:#EB4E01;font-family:Britannic">@Session["UserName"]</h3>&nbsp;&nbsp;<h3 style="color:white;font-family:Britannic">-</h3> &nbsp;<h3 style="color:#EB4E01;font-family:Britannic">@Session["ID"]</h3>
+            </div><br /><br />
+            <div id="tabs" >
+                @Html.ActionLink(" Profile", "Profile", "Profile",null, new { @class = "tab fa fa-user" })
+                @Html.ActionLink(" Registration", "Registration","Registration", null, new { @class = "tab fa fa-edit" })
+
+                @Html.ActionLink(" Exams", "Exams","Exams" ,null, new { @class = "tab fa fa-book" })
+
+                @Html.ActionLink(" Messages", "Messages", "Messages",null, new { @class = "tab fa fa-comments" })
+                @Html.ActionLink(" Log-out", "Login", "Default", null, new {@class = "btn btn-primary", @style="margin-left:10px;background-color:red;color:black;border:hidden;" })
+            </div>
+            <div id="content">
+                @RenderBody()
+            </div>
+            <footer>
+                Developed by <a href="#">Awad</a>.
+            </footer>
+        </main>
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>
+      
+
+</body>
+</html>
+
+

@@ -1,0 +1,68 @@
+﻿@{ 
+    Layout = null;
+}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/css/main.css">
+<style>
+    li{
+        padding:15px;text-decoration-line:none;display:inline-flex;
+    
+        }
+    
+     
+    .li{
+        text-decoration:none;
+        color:black;font-size:20px;cursor:pointer;transition:ease 0.4s;
+    }
+    .li:hover{
+          font-weight:bold;border-bottom:dotted black 2px;color:black;
+    }
+    #container{
+       background-color:#7d5a5a; 
+padding-top:30px; width:800px;height:700px;border:2px black solid; border-radius:13px; margin-left:320px;margin-top:50px;
+    }
+    ul{
+        border:3px solid black;margin-left:-10px;
+  background-color:#f3e1e1; width: 820px;border-radius:30px;text-align:center;
+    }
+    #last:hover{
+        background-color:#f3e1e1;
+    }
+</style>
+<body style="background-color:#f3e1e1">
+    <div id="container" >
+        <h1 style="color:white;font-family:Britannic;margin-left:40px;">Instructer Portal</h1><br />
+        <div style="display:inline-flex;">
+            <h3 style="font-family:Britannic;margin-left:40px;">@Session["UserName"]</h3>&nbsp;&nbsp;<h3 style="font-family:Britannic;">-</h3> &nbsp;<h3 style="font-family:Britannic">@Session["Dep"]</h3>
+        <br /><br />
+        </div>
+        <ul >
+            <li id="firstli">@Html.ActionLink("Courses", "Courses","Courses", null,new { @class="li"})</li>
+            <li>@Html.ActionLink("Closed Courses", "ClosedCourses","Courses", null, new { @class = "li" })</li>
+            <li>@Html.ActionLink("Exams", "Exams", "Exam_Messages", null, new { @class = "li" })</li>
+            <li>@Html.ActionLink("Messages","Messages" ,"Exam_Messages", null, new { @class = "li" })</li>
+            <li id="last">@Html.ActionLink("Logout", "Login","Login", null, new { @class = "btn btn-danger"})</li>
+        </ul>
+
+        @RenderBody()
+    </div>
+</body>

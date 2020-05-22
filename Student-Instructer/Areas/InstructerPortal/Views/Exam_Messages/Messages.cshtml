@@ -1,0 +1,104 @@
+﻿@model DAL.GetAllMessages
+@{
+    Layout = "~/Areas/InstructerPortal/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Messages";
+}
+<br /><br />
+<div style="height:450px;overflow:auto">
+    <h2 style="color:black;font-family:Britannic;margin-left:10px">Mark Revision</h2><br />
+    @if (Model.Revision.Capacity > 0)
+    {
+        using (Html.BeginForm("Messages", "Exam_Messages", FormMethod.Post))
+        {
+
+            <table class="table table-dark" id="tbl">
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Exam</th>
+                    <th></th>
+
+                </tr>
+                @foreach (var i in Model.Revision)
+                {
+                    <tr>
+                        <td>@i.StudentID</td>
+                        <td>@i.StudentName</td>
+                        <td>@i.CourseName</td>
+                        <td>@i.Exam</td>
+                        <td><button class="btn btn-primary" name="btn" value="1" type="submit">Discard</button></td>
+
+                    </tr>
+                }
+            </table>
+            <input type="hidden" name="STD" id="STD" /><input type="hidden" name="CRS" id="CRS" />
+        }
+    }
+
+
+    else
+    {
+        <h3 style="color:black;font-family:Britannic;margin-left:20px">No Revisions</h3>
+    }<br>
+
+    <h2 style="color:black;font-family:Britannic;margin-left:10px">Custom Messages</h2><br />
+    @if (Model.Custom.Capacity > 0)
+    {
+        using (Html.BeginForm("Messages", "Exam_Messages", FormMethod.Post))
+        {
+            <table class="table table-dark" id="tbl2">
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Messages</th>
+                    <th></th>
+
+                </tr>
+                @foreach (var i in Model.Custom)
+                {
+                    <tr>
+                        <td>@i.StudentID</td>
+                        <td>@i.StudentName</td>
+                        <td>@i.Course</td>
+                        <td>@i.Message</td>
+                        <td><button class="btn btn-primary" name="btn" value="2" type="submit">Discard</button></td>
+
+                    </tr>
+                }
+            </table>
+            <input type="hidden" name="STD2" id="STD2" /><input type="hidden" name="CRS2" id="CRS2" />
+        }
+    }
+
+
+    else
+    {
+        <h2 style="color:black;font-family:Britannic;margin-left:20px">No Messages</h2>
+    }
+</div>
+<script>
+    var tbl = document.getElementById("tbl"), tbl2 = document.getElementById("tbl2");
+    for (var i = 0; i < tbl.rows.length; i++) {
+        tbl.rows[i].onclick = function () {
+            index = this.rowindex;
+            document.getElementById("STD").value = this.cells[1].innerHTML;
+            document.getElementById("CRS").value = this.cells[2].innerHTML;
+
+        }
+    }
+    for (var i = 0; i < tbl2.rows.length; i++) {
+        tbl2.rows[i].onclick = function () {
+            index = this.rowindex;
+            document.getElementById("STD2").value = this.cells[1].innerHTML;
+            document.getElementById("CRS2").value = this.cells[2].innerHTML;
+
+        }
+    }
+
+</script>
+
+
+
+

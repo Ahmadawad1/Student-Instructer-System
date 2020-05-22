@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DAL.Registration>
+
+@{
+    Layout = "~/Areas/InstructerPortal/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "List if Students";
+}
+
+<br />
+@Html.ActionLink(" ", "Courses", "Courses", null, new { @class = "fa fa-arrow-circle-left", @style = "color:black;font-size:30px;margin-left:30px;" });
+<br /><br />
+@if (Model.Count() > 0)
+{
+    using (Html.BeginForm("Save", "Courses", FormMethod.Post))
+    {
+        <label style="margin-left:20px;font-family:cursive;font-weight:bolder">Press on the Mark,if you want to commit any change</label><br />
+        <div style="height:300px;overflow:auto;">
+            <table class="table table-dark" id="tbl">
+                <tr><th>ID</th><th>Student Name</th><th>First Mark</th><th>Second Mark</th><th>Final Mark</th><th>.</th></tr>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.StudentID</td>
+                        <td>@i.Student</td>
+                        <td contenteditable="true">@i.FirstMark</td>
+                        <td contenteditable="true">@i.SecondMark</td>
+                        <td contenteditable="true">@i.FinalMark</td>
+                        <td><button type="submit" class="btn btn-primary" name="Save">Save</button></td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <label style="margin-left:20px;font-family:cursive;font-weight:bolder">Total Students : @Model.Count()</label>
+       <input type="hidden" name="Name" id="Name" />
+<input type="hidden" name="First" id="First" />
+<input type="hidden" name="Second" id="Second" />
+ <input type="hidden" id="Final" name="Final" />
+    }
+}
+else
+{
+    <h2 style="color:black;font-family:Britannic;margin-left:20px">No Registered Student</h2>
+}
+
+
+<script>
+    var tbl = document.getElementById("tbl");
+    for (var i = 0; i < tbl.rows.length; i++) {
+        tbl.rows[i].onclick = function () {
+            index = this.rowindex;
+            
+            document.getElementById("Name").value = this.cells[1].innerHTML;
+            document.getElementById("First").value = this.cells[2].innerHTML;
+            document.getElementById("Second").value = this.cells[3].innerHTML;
+            document.getElementById("Final").value = this.cells[4].innerHTML;
+
+           
+        } 
+    }
+
+</script>

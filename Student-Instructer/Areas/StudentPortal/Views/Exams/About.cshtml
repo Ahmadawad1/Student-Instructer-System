@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = "~/Areas/StudentPortal/Views/Shared/MasterView.cshtml";
+    ViewBag.Title = "Exams Info.";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/Images/icons/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+</head><br />
+@Html.ActionLink(" ", "Exams", "Exams", null, new { @class = "fa fa-arrow-circle-left", @style = "color:#ef7823;font-size:30px;margin-left:30px;" });
+<br /><br />
+<h2 style="color:#EB4E01;font-family:Britannic">Exams Rules</h2>
+<br /><div style="overflow:auto; height:250px;">
+    <ol class="list-group">
+        <li class="list-group-item">A student will be given “0” if he or she is caught cheating in the Common Test.</li>
+        <li class="list-group-item">No mobile phones or electronic gadgets that can store, transmit, receive data or information are allowed</li>
+        <li class="list-group-item">Students must not talk, whisper, do hand signal or any other form of verbal or non-verbal communication</li>
+        <li class="list-group-item">Students must be seated at their assigned desks by 7.25am.</li>
+        <li class="list-group-item">Students who are late will not be given extra time</li>
+        <li class="list-group-item">Only essential writing materials are allowed on the student’s desk.All bags, books and any unauthorised materials should be left at the front of the classroom.</li>
+    </ol></div>
+    <br /><h2 style="color:#EB4E01;font-family:Britannic">Score System</h2><br />
+    <div style="overflow:auto; height:250px;">
+        <table class="table table-dark">
+            <tr><th>Score</th><th>Point</th><th>Estimate</th></tr>
+            <tr>
+                <td>A+</td>
+                <td>4.00</td>
+                <td>Excellent</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>3.75</td>
+                <td>Excellent</td>
+            </tr>
+            <tr>
+                <td>A-</td>
+                <td>3.50</td>
+                <td>Excellent</td>
+            </tr>
+            <tr>
+                <td>B+</td>
+                <td>3.25</td>
+                <td>Very Good</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>3.00</td>
+                <td>Very Good</td>
+            </tr>
+            <tr>
+                <td>B-</td>
+                <td>2.75</td>
+                <td>Very Good</td>
+            </tr>
+            <tr>
+                <td>C+</td>
+                <td>2.50</td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>2.25</td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td>C-</td>
+                <td>2.00</td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td>D+</td>
+                <td>1.75</td>
+                <td>Fair</td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>1.50</td>
+                <td>Fair</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>ZERO</td>
+                <td>Weak</td>
+            </tr>
+
+        </table>
+    </div>

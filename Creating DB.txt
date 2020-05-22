@@ -1,0 +1,178 @@
+This is the SQL code for the Project.
+Please Execute each table & populate its data individually.
+OR
+You can just Import the Entire Database from the 'DataBaseToImport' file.
+
+
+//**********************************************************
+create table Faculty(
+ID int primary key,[Name] nvarchar(50)
+)
+insert into Faculty values(1,'Engineering')
+insert into Faculty values(2,'Medicine')
+insert into Faculty values(3,'Information Technology')
+insert into Faculty values(4,'Science')
+insert into Faculty values(5,'Language')
+//**************************************************************************
+
+
+create table Department(
+ID int primary key,[DepartmentName] nvarchar(100),Faculty int references Faculty (ID)
+)
+insert into Department values(1,'Computer Engineering',1)
+insert into Department values(2,'Electrical Engineering',1)
+insert into Department values(3,'Civil Engineering',1)
+insert into Department values(4,'Mathematics',4)
+insert into Department values(5,'Physics',4)
+insert into Department values(6,'English',5)
+insert into Department values(7,'Arabic',5)
+insert into Department values(8,'Computer Science',3)
+insert into Department values(9,'Medical Sciences',2)
+insert into Department values(10,'Mechanical Engineering',1)
+//**************************************************************************
+create table Instructers(
+ID int primary key,[InstructerName] nvarchar(100),
+Email nvarchar(100),[Password] nvarchar(100),[Department] int references Department(ID),
+[Course1] nvarchar(100),[Course2] nvarchar(100),[Course3] nvarchar(100),[Course4] nvarchar(100))
+
+insert into Instructers values(1,'Dr. Ahmad Qattoum',null,null,1,null,null,null,null)
+insert into Instructers values(2,'Dr. Anas Majali',null,null,1,null,null,null,null)
+insert into Instructers values(3,'Dr. Awni Taradat',null,null,1,null,null,null,null)
+insert into Instructers values(4,'Eng. Manar Jaradat',null,null,1,null,null,null,null)
+insert into Instructers values(5,'Dr. Ashraf Ali',null,null,2,null,null,null,null)
+insert into Instructers values(6,'Dr. Rula Tawalbeh',null,null,2,null,null,null,null)
+insert into Instructers values(7,'Dr. Amer Sarairah',null,null,2,null,null,null,null)
+insert into Instructers values(8,'Dr. Bashir Hudeibat',null,null,4,null,null,null,null)
+insert into Instructers values(13,'S. Raed Nuti',null,null,4,null,null,null,null)
+insert into Instructers values(9,'Dr. Qaseim Emad',null,null,5,null,null,null,null)
+insert into Instructers values(10,'Dr. Mai Malkawi',null,null,6,null,null,null,null)
+insert into Instructers values(11,'Eng. Yousef Mashaqbeh',null,null,3,null,null,null,null)
+insert into Instructers values(12,'Dr. Majdi Maabreh',null,null,8,null,null,null,null)
+
+
+update Instructers set Course1='Data Communications',Course2='Computer Networks' where ID=1
+update Instructers set Course1='Digital Logic Lab',Course2='Digital Logic' where ID=2
+update Instructers set Course1='Assembly and Microprocessing' where ID=3
+update Instructers set Course1='Computer Programming',Course2='Data Structures',Course3='Algorithm' where ID=4
+update Instructers set Course1='Signals and Systems' where ID=5
+update Instructers set Course1='Electronics 1' where ID=6
+update Instructers set Course1='Electrical Circuit' where ID=7
+update Instructers set Course1='Calculus 1',Course2='Calculus 2',Course3='Calculus 3' where ID=8
+update Instructers set Course1='Physics Lab' where ID=9
+update Instructers set Course1='Autocad Drawing Lab',Course2='Manual Drawing',Course3='Numerical Analysis' where ID=11
+update Instructers set Course1='Database' where ID=12
+update Instructers set Email='qattoum@hu.jo' ,[Password] =123456789 where ID=1
+update Instructers set Email='majali@hu.jo' ,[Password] =123456789 where ID=2
+update Instructers set Email='tradat@hu.jo' ,[Password] =123456789 where ID=3
+update Instructers set Email='jaradat@hu.jo' ,[Password] =123456789 where ID=4
+update Instructers set Email='ashrafali@hu.jo' ,[Password] =123456789 where ID=5
+update Instructers set Email='twalalbeh@hu.jo' ,[Password] =123456789 where ID=6
+update Instructers set Email='amersar@hu.jo' ,[Password] =123456789 where ID=7
+update Instructers set Email='bashir@hu.jo' ,[Password] =123456789 where ID=8
+update Instructers set Email='qasimemad@hu.jo' ,[Password] =123456789 where ID=9
+update Instructers set Email='malkawi@hu.jo' ,[Password] =123456789 where ID=10
+update Instructers set Email='mashaqbeh@hu.jo' ,[Password] =123456789 where ID=11
+update Instructers set Email='majdi@hu.jo' ,[Password] =123456789 where ID=12
+update Instructers set Email='raednuti@hu.jo' ,[Password] =123456789 where ID=13
+//**************************************************************************
+create table Student(
+ID int primary key,FirstName nvarchar(20),SecondName nvarchar(20),Major nvarchar(50),[Email] nvarchar(100),[Password] nvarchar(50),[Image] nvarchar(200),[Department] int references Department(ID)
+)
+
+insert into Student values(1732912,'Ahmad','Awad','Computer Engineering','ahmadjalal19@gmail.com','123456789','',1)
+insert into Student values(1742589,'Mohammad','Ali','Computer Engineering','mohammad@gmail.com','123456789','',3)
+insert into Student values(1738955,'Asem','Jihad','Computer Engineering','as.jihad@gmail.com','123456789','',8)
+insert into Student values(1832912,'Qasim','Mousa','Computer Engineering','qasim2000@yahoo.com','123456789','',2)
+insert into Student values(1837901,'Jamal','Ayed','Computer Engineering','ayedjamal@hotmail.com','123456789','',4)
+insert into Student values(1489412,'Sara','Kamal','Computer Engineering','sarasara10@gmail.com','123456789','',5)
+insert into Student values(1620780,'Dalin','Yahya','Computer Engineering','dalin1996@outlook.com','123456789','',6)
+insert into Student values(172318,'Yamen','Salah','Computer Engineering','yamen6@gmail.com','123456789','',1)
+insert into Student values(1849222,'Noor','Wesam','Computer Engineering','noor.w9@yahoo.com','123456789','',1)
+insert into Student values(1920144,'Tareq','Ahmad','Computer Engineering','tariqq1000@gmail.com','123456789','',1)
+update Student set [Image]='~/Images/Sara.jpg' where ID=1489412
+update Student set [Image]='~/Images/Dalin.jpg' where ID=1620780
+update Student set [Image]='~/Images/Yamen.jpg' where ID=1723188
+update Student set [Image]='~/Images/Asem.jpg' where ID=1738955
+update Student set [Image]='~/Images/Noor.jpg' where ID=1849222
+update Student set [Image]='~/Images/AhmadAwad.jpg' where ID=1732912
+update Student set [Image]='~/Images/Mohammad.jpg' where ID=1742589
+update Student set [Image]='~/Images/Qasim.jpg' where ID=1832912
+update Student set [Image]='~/Images/Jamal.jpg' where ID=1837901
+update Student set [Image]='~/Images/Tareq.jpg' where ID=1920144
+
+//**************************************************************************
+
+
+
+create table [MarkRevision](
+MSGID int primary key identity(1,1),StudentID int ,StudentName nvarchar(100),CourseName nvarchar(50),Instructer nvarchar(100),Exam nvarchar(50)
+)
+create table CustomMsg(
+MSGID int primary key  identity(1,1),StudentID int,StudentName nvarchar(50),Course nvarchar(50),[To] nvarchar(100),[Message] nvarchar(1000)
+)
+
+
+CREATE TABLE [dbo].[Registration](
+	[ArtificialKey] [int] primary key identity(1,1),
+	[StudentID] [int] NOT NULL,
+	[Student] [nvarchar](100) NULL,
+	[Course] [nvarchar](100) NULL,
+	[Time] [nvarchar](20) NULL,
+	[Hall] [nvarchar](20) NULL,
+	[Instructer] [nvarchar](100) NULL,
+	[CourseID] [int] NULL,
+	[Day] [nvarchar](20) NULL,
+[FirstMark] nvarchar(10),[SecondMark] nvarchar(10),[FinalMark] nvarchar(10)
+	
+)
+//**************************************************************************
+create table ComputerEngineering(
+ID int primary key ,[CourseName] nvarchar(100),[Hall] nvarchar(20),[Time] nvarchar(50),Department int references Department(ID),[Max] int,[RegisteredStudents] int,[Instructer] int references Instructers(ID),
+[Day] nvarchar(50),[Statue] nvarchar(20),FirstExam nvarchar(100),SecondExam nvarchar(100),FinalExam nvarchar(100)
+)
+
+
+insert into ComputerEngineering values(3111,'Calculus 1','HB202','9:00-10:00',4,60,0,8,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3112,'Calculus 2','HB102','10:00-11:00',4,60,0,13,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3113,'Calculus 3','W202','12:30-2:00',4,60,0,8,'M W','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3121,'Digital Logic','E2002','11:00-12:00',1,60,0,2,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(1122,'Digital Logic Lab','E1002','2:00-5:00',1,20,0,2,'W','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3124,'Computer Networks','E2016','11:00-12:30',1,40,0,1,'M W','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3126,'Data Communications','E2016','9:30-11:00',1,45,0,1,'M W','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3128,'Data Structures','E2016','12:00-1:00',1,45,0,4,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3130,'Algorithm','HB306','9:00-10:00',1,60,0,4,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3131,'Computer Programming','HB206','8:00-9:30',1,50,0,4,'M W','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(1132,'Physics Lab','P116','8:00-11:00',5,20,0,9,'S','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3142,'Electrical Circuit','P116','8:00-11:00',2,70,0,7,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3143,'Electronics 1','E2018','11:00-12:00',2,60,0,6,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3144,'Signals and Systems','E2022','9:30-11:00',2,60,0,5,'M W','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(2152,'Manual Drawing','E1024','11:00-2:00',3,20,0,11,'M','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+insert into ComputerEngineering values(3152,'Numerical Analysis','HB207','9:00-10:00',3,20,0,11,'S T TH','Open','Has not been Scheduled','Has not been Scheduled','Has not been Scheduled')
+ 
+
+//***************************************************************
+create view [dbo].[ComputerEngineeringV] as 
+select ComputerEngineering.ID,ComputerEngineering.CourseName ,Department.DepartmentName ,Hall,[Time],Instructers.InstructerName ,Statue,[Day],[Max],[RegisteredStudents] from ComputerEngineering join Department on (ComputerEngineering.Department=Department.ID ) join Instructers on ComputerEngineering.Instructer=Instructers.ID
+
+
+create view [dbo].[Requests] as
+select CourseName,Closed.ID,Student,Closed.Time,RegisteredStudents,Max,Closed.Instructer,Closed.Statue from ComputerEngineering join Closed on ComputerEngineering.CourseName=Closed.Course
+
+create view DEP_INS as
+select InstructerName ,Closed.Instructer ,Department.DepartmentName from Instructers join Department on Instructers.Department=Department.ID
+
+)
+
+
+
+//***************************************************************
+
+create table Closed (
+[ArtificialKey] [int] primary key identity(1,1),
+ID int ,[Student] nvarchar(100),[Course] nvarchar(100),[Instructer] nvarchar(50),[Time] nvarchar(20),Statue nvarchar(20)
+)
+//*****************************************************************
+
+Thank you , i hope you didn't have any problems.
+
+

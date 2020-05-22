@@ -1,0 +1,105 @@
+﻿
+@{
+    Layout = "~/Areas/StudentPortal/Views/Shared/MasterView.cshtml";
+    ViewBag.Title = "Drop a Course";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/Images/icons/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+</head><br />
+@Html.ActionLink(" ", "Registration", "Registration", null, new { @class = "fa fa-arrow-circle-left", @style = "color:#ef7823;font-size:30px;margin-left:30px;" });
+<br />
+<br />
+@if (Model.STD.Count > 0)
+{
+<h2 style="color:#EB4E01;font-family:Britannic">Drop a Course</h2><br />
+    <table class="table table-bordered  table-hover " style="background-color:#e2dbd6;" id="tbl2">
+        <tr>
+            <th> </th>
+            <th>Course ID</th>
+            <th>Course</th>
+            <th>Hall</th>
+            <th>Instructer</th>
+            <th>Time</th>
+            <th>Day</th>
+        </tr>
+
+        @foreach (var i in Model.STD)
+        {
+            <tr>
+                <td><button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Drop</button></td>
+                <td>@i.CourseID</td>
+                <td>@i.Course</td>
+                <td>@i.Hall</td>
+                <td>@i.Instructer</td>
+                <td>@i.Time</td>
+                <td>@i.Day</td>
+            </tr>
+        }
+
+
+
+    </table>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+                Are you sure of deleting<p id="lbl" style="color:red;"></p>?
+                </div>
+                <div class="modal-footer">
+@using (Html.BeginForm("Drop", "Registration", FormMethod.Post))
+{  <input type="hidden" id="ID1" name="ID1" />
+                    <button type="button"  class="btn btn-success" data-dismiss="modal" name="btn" value="Keep">Keep it</button>
+                    <button type="submit" class="btn btn-danger"  name="btn" value="Drop" >Drop</button>
+}
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h2 style="color:#EB4E01;font-family:Britannic">No Registered Courses</h2><br />
+}
+
+<script>
+    var tbl2 = document.getElementById("tbl2");
+     for (var i = 0; i < tbl2.rows.length; i++) {
+            tbl2.rows[i].onclick = function () {
+                index = this.rowindex;
+                document.getElementById("ID1").value = this.cells[1].innerHTML;
+                document.getElementById("lbl").innerHTML = this.cells[2].innerHTML;
+            }
+        }
+
+
+</script>

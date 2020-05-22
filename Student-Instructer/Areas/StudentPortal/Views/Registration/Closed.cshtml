@@ -1,0 +1,152 @@
+﻿@model DAL.REG_STD
+@{
+    Layout = "~/Areas/StudentPortal/Views/Shared/MasterView.cshtml";
+    ViewBag.Title = "Closed Courses";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/Images/icons/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+</head><br />
+<style>
+    #Search:hover{
+        background-color:#ad5e26;color:#5e5e5e;
+    }
+</style>
+@Html.ActionLink(" ", "Registration", "Registration", null, new { @class = "fa fa-arrow-circle-left", @style = "color:#ef7823;font-size:30px;margin-left:30px;" });
+<br /><br />
+<h3 style="color:#EB4E01;font-family:Britannic">Apply for Closed Course</h3>
+<br /><br />
+@using (Html.BeginForm("Closed","Registration",FormMethod.Post)) { 
+    <div style="display:inline-flex;">
+    <input class="form-control mr-sm-2" type="text" style="width:250px;"  placeholder="Write Course Name..." id="search" aria-label="Search" name="search">
+    <button style="background-color:#ef7823; color:black;border-color:black;" name="btn" id="Search" value="Search" class="btn btn-primary" type="submit">Search</button>
+    </div>
+      <br /><br />
+
+    if (Model.REG != null)
+    {
+        <div style="overflow:auto; max-height:150px;">
+            <table class="table table-bordered  table-hover" style="background-color:#e2dbd6;" id="tbl">
+                <tr><th>.</th><th>Name</th><th>Instructer</th><th>Time</th></tr>
+
+                @foreach (var i in Model.REG)
+                {
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-primary" name="btn" value="Apply">Apply</button>
+                        </td>
+                        <td>@i.CourseName</td>
+                        <td>@i.InstructerName</td>
+                        <td>@i.Time</td>
+                    </tr>
+                }
+            </table>
+            <input type="hidden" id="Instructer" name="Instructer" />
+
+            <input type="hidden" id="Time" name="Time" />    <input type="hidden" id="Course" name="Course" />
+        </div>
+            }
+
+
+            <br /><br />
+            if (Model.CLO.Count==0)
+            {
+            <h3 style="color:#EB4E01;font-family:Britannic">
+                No Requests!
+            </h3>
+            }
+            else
+            {
+            <h3 style="color:#EB4E01;font-family:Britannic">Applied Requests</h3><br />
+            <div style="overflow:auto; max-height:200px;">
+
+                <table class="table table-bordered  table-hover" style="background-color:#e2dbd6;" id="tbl2">
+                    <tr><th></th><th></th><th>Name</th><th>Instructer</th><th>Time</th><th>Statue</th></tr>
+
+                    @foreach (var i in Model.CLO)
+                    {
+                        <tr>
+                            @if (i.Statue == "Requesting")
+                            {
+                                <td></td>
+                            <td>
+                                <button type="submit" class="btn btn-danger" name="btn" value="Delete">Undo</button>
+                            </td>
+                            }
+                            else if (i.Statue == "Yes")
+                            {
+                                <td><button type="submit" class="btn btn-danger" name="btn" value="Delete">Discard</button></td>
+                                <td>
+                                    <button type="submit" class="btn btn-success" name="btn" value="Submit">Submit</button>
+                                </td>
+                            }
+                            else if (i.Statue == "No")
+                            {
+                                <td></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-danger" name="btn" value="Delete">Discard</button>
+                                    </td>
+                            }
+                            <td>@i.Course</td>
+                            <td>@i.Instructer</td>
+                            <td>@i.Time</td>
+                            <td>@i.Statue</td>
+                        </tr>
+                    }
+                </table>
+                <input type="hidden" id="Course" name="Course" /> <input type="hidden" id="Ti" name="Ti" />
+                <input type="hidden" id="Ins" name="Ins" />
+ 
+            </div><br />
+            <label style="color:red;">@ViewBag.MSG</label>
+
+    }
+
+   
+}
+
+
+            <script>
+                var tbl = document.getElementById("tbl"), index, tbl2 = document.getElementById("tbl2");
+                if (tbl != null) {
+                    for (var i = 0; i < tbl.rows.length; i++) {
+                        tbl.rows[i].onclick = function () {
+                            index = this.rowindex;
+
+                            document.getElementById("Course").value = this.cells[1].innerHTML;
+                            document.getElementById("Instructer").value = this.cells[2].innerHTML;
+                            document.getElementById("Time").value = this.cells[3].innerHTML;
+
+                        }
+                    }
+                }
+                for (var i = 0; i < tbl2.rows.length; i++) {
+                    tbl2.rows[i].onclick = function () {
+                        index = this.rowindex;
+                        document.getElementById("Course").value = this.cells[2].innerHTML;
+                        document.getElementById("Ins").value = this.cells[3].innerHTML;
+                        document.getElementById("Ti").value = this.cells[4].innerHTML;
+
+                    }
+                }
+            </script>

@@ -1,0 +1,53 @@
+﻿@model DAL.Student
+
+@{
+    Layout = "~/Areas/StudentPortal/Views/Shared/MasterView.cshtml";
+    ViewBag.Title = "Change Email";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/Images/icons/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+</head>
+<style>
+      .textb{
+        border-radius:3px;
+        background-color:#ef7823;
+ padding:10px;
+    }
+     p{
+        font-size:35px;color:#ca6015;
+        font-family:Aldhabi;
+    }
+</style>
+<br /><br />
+@Html.ActionLink(" ","Profile",null,new { @class= "fa fa-arrow-circle-left",@style= "color:#ef7823;font-size:30px;margin-left:30px;" });
+<br />
+<div  style="text-align:center;">
+    @using (Html.BeginForm("ChangeEmail", "Profile", FormMethod.Post))
+    {
+        <p>Current Email</p>@Html.TextBox("CurrentEmail",Model.Email,null, new { @class = "textb", @readonly="true",@style="opacity:0.7" })
+        <p>New Email</p>@Html.TextBox("NewEmail", null, new { @class = "textb", @type = "email" })
+        <br /><br />    
+        <input type="submit" value="Save" style="cursor:pointer" class="btn btn-success" />
+
+    }
+</div>

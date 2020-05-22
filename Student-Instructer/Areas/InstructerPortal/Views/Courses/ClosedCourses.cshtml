@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DAL.Requests>
+@{
+    Layout = "~/Areas/InstructerPortal/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Requests";
+}
+<br /><br />
+@if (Model.Count() > 0)
+{
+using (Html.BeginForm("ClosedCourses", "Courses", FormMethod.Post))
+{
+    <table class="table table-dark" id="tbl">
+        <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Time</th>
+            <th>Registered</th>
+            <th>Max</th>
+            <th> </th>
+            <th> </th>
+
+        </tr>
+        @foreach (var i in Model)
+        {
+<tr>
+    <td>@i.ID</td>
+    <td>@i.Student</td>
+    <td>@i.CourseName</td>
+    <td>@i.Time</td>
+    <td>@i.RegisteredStudents</td>
+    <td>@i.Max</td>
+    @if (i.Statue == "Yes")
+    {
+        <td style="color:forestgreen;font-weight:bold;">Approved</td>
+    }
+    else if (i.Statue == "No")
+    {
+    <td style="color:red;font-weight:bold;">Disapproved</td> }
+    else
+    {
+    <td><button class="btn btn-success" name="btn" value="Approve">Approve</button></td>
+    <td><button class="btn btn-danger" name="btn" value="Disapprove">Disapprove</button></td>
+    }
+   
+
+</tr>
+        }
+    </table>
+    <input type="hidden" name="STD" id="STD"/><input type="hidden" name="CRS" id="CRS"/>
+}
+}
+else
+{
+    <h2 style="color:black;font-family:Britannic;margin-left:20px">No Requests</h2>
+}
+<script>
+    var tbl = document.getElementById("tbl"), r = document.getElementById("tr");
+    for (var i = 0; i < tbl.rows.length; i++) {
+        tbl.rows[i].onclick = function () {
+            index = this.rowindex;
+            document.getElementById("STD").value = this.cells[1].innerHTML;
+            document.getElementById("CRS").value = this.cells[2].innerHTML;
+            
+        }
+    }
+
+</script>

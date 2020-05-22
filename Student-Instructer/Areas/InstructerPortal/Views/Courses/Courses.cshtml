@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Areas/InstructerPortal/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Profile";
+}
+<br /><br />
+<h1 style="color:black;font-family:Britannic;margin-left:10px">Your Courses</h1><br /><br />
+<style>
+    .button:hover{
+        background-color:white;color:black;
+    }
+    .button{
+        font-size:20px;
+        background-color:#c3bebe;transition:ease 0.5s;border:hidden;color:black;border-radius:4px;padding:10px;
+        margin-left:20px;
+    }
+</style>
+@using (Html.BeginForm("Courses", "Courses", FormMethod.Post))
+{
+foreach (var i in ViewBag.Courses)
+{
+    if (i == null) { continue; }
+    <button class="button" type="submit" name="btn" value="@i">@i</button>
+}
+    <input type="hidden" name="CRS"/>
+}
+
+
