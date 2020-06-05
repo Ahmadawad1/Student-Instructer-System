@@ -1,0 +1,11 @@
+If you want to browse as a Instucter : 
+
+Open Student-Instructer Solution---> UI Project--->Areas ---> Instructer Portal ---> Views--->Login---> Run the Login View 
+
+
+************************************************
+
+
+If you want to browse as a Student :
+
+Open Student-Instructer Solution---> UI Project--->Areas ---> Student Portal ---> Views--->Default---> Run the Login View
