@@ -33,7 +33,7 @@ the 'DataBaseToImport.bacpac' file , or execute the sql code which is exist in '
 ## P.S
 The Students and Insturcters Names that are stored in Database don't represent actual people,it's been randomly choosen with their images.
 
-Unfortunetly,this project doesn't provide a Sign-In feature ,use the data that are already exit in database,but if you want to, add the student\instructer manually in the database.
+Unfortunetly,this project doesn't provide a Sign-In feature ,use the data that are already exist in database.However, if you want to custom new User(Instrucer or Student), add the student or instructer manually in the database.
 
 # Thank you for reading.
 
